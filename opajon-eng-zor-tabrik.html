@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rushancam, tug'ilgan kuning muborak! 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffe94a;--ink:#141414;--card:#fff;--pink:#ff4f9a;--cyan:#27d3e6;--lime:#9cf24b;--vio:#8a5cff;--bd:#141414;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0f3a;--ink:#fff7d6;--card:#2b1b5c;--bd:#ffe94a}}
+:root[data-theme="dark"]{--bg:#1a0f3a;--ink:#fff7d6;--card:#2b1b5c;--bd:#ffe94a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-weight:800;overflow-x:hidden;
+background-image:radial-gradient(var(--bd) 1.2px,transparent 1.6px);background-size:22px 22px;background-blend-mode:soft-light}
+main{max-width:30rem;margin:0 auto;padding:1rem 1rem 4rem;text-align:center}
+h1,h2{font-family:Bungee,Impact,sans-serif;font-weight:400;line-height:1.05;margin:.4rem 0 .8rem}
+h1{font-size:2rem}h2{font-size:1.5rem}
+.card{background:var(--card);border:3px solid var(--bd);border-radius:1.1rem;box-shadow:6px 6px 0 var(--bd);padding:1.1rem}
+.dots{display:flex;justify-content:center;gap:.5rem;margin:.2rem 0 1rem}
+.dots i{width:.9rem;height:.9rem;border-radius:50%;border:3px solid var(--bd);background:var(--card);transition:background .3s}
+.dots i.on{background:var(--pink)}.dots i.ok{background:var(--lime)}
+.scr{display:none}.scr.on{display:block;animation:in .5s cubic-bezier(.2,1.5,.4,1)}
+@keyframes in{from{transform:translateY(40px) rotate(-3deg);opacity:0}}
+.btn{display:block;width:100%;font:inherit;font-size:1.05rem;color:#141414;background:var(--pink);border:3px solid var(--bd);border-radius:.9rem;box-shadow:4px 4px 0 var(--bd);padding:.85rem 1rem;margin:.9rem 0;cursor:pointer;text-decoration:none;transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--bd)}
+.btn:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+.btn.c{background:var(--cyan)}.btn.l{background:var(--lime)}.btn.y{background:#ffe94a}
+.hide{display:none!important}
+.term{background:#0f1a12;color:#7cfc9a;font-family:ui-monospace,Menlo,monospace;font-size:.88rem;text-align:left;line-height:1.7;min-height:15rem;border:3px solid var(--bd);border-radius:1rem;padding:1rem;box-shadow:6px 6px 0 var(--bd)}
+.term .w{color:#ffb454}.term .big{color:#0f1a12;background:#7cfc9a;display:block;text-align:center;padding:.4rem;border-radius:.4rem;margin-top:.5rem;font-weight:800}
+.hud{display:flex;justify-content:space-between;font-family:Bungee,sans-serif;font-size:1.05rem;margin-bottom:.5rem}
+#area{position:relative;height:23rem;overflow:hidden;touch-action:none;background:linear-gradient(#bdebfa,#e8f9ff);border:3px solid var(--bd);border-radius:1rem;box-shadow:6px 6px 0 var(--bd);cursor:none;user-select:none;-webkit-user-select:none}
+#area .it{position:absolute;left:0;top:0;font-size:2rem;line-height:1;will-change:transform}
+#bk{position:absolute;bottom:2px;left:0;font-size:3.2rem;line-height:1;will-change:transform}
+#gres{font-size:1.15rem;margin-top:.8rem}
+.stat{margin:1rem 0}.stat b{display:block;font-family:Bungee,sans-serif;font-size:2.6rem;color:var(--pink);line-height:1}.stat span{font-size:.95rem}
+.trail{background:#000;color:#fff;border:3px solid var(--bd);border-radius:1rem;box-shadow:6px 6px 0 var(--bd);min-height:20rem;padding:1.4rem 1rem;display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.trail .sig{font-family:Bungee,sans-serif;font-size:1.2rem;color:#ffd54a}
+.trail p{margin:0;font-size:1.05rem;line-height:1.5;opacity:0;transform:scale(1.15);transition:opacity 1s,transform 1s}.trail p.in{opacity:1;transform:none}
+.trail .ttl{font-family:Bungee,sans-serif;font-size:2.4rem;color:#ffd54a;line-height:1}
+.sg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:.8rem}
+.sc{position:relative;height:10.5rem;border:3px solid var(--bd);border-radius:.9rem;overflow:hidden;background:var(--card);box-shadow:4px 4px 0 var(--bd)}
+.sc .m{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:.8rem;font-size:1rem;line-height:1.3;text-align:center}
+.sc canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
+.cert{background:#fffbe8;color:#141414;border:5px double #141414;border-radius:.6rem;padding:1.4rem 1rem;box-shadow:6px 6px 0 var(--bd);position:relative;z-index:6}
+.cert h2{color:#d62d7c;font-size:1.5rem}
+.nm{font-family:Bungee,sans-serif;font-size:2rem;margin:.6rem 0;border-bottom:3px dashed #141414;display:inline-block;padding:0 .5rem}
+.stamp{display:inline-block;transform:rotate(-12deg);border:4px solid #d62d7c;color:#d62d7c;border-radius:50%;padding:.8rem .5rem;font-family:Bungee,sans-serif;font-size:.85rem;margin:.6rem 0}
+#fw{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.cf{position:fixed;top:-1rem;width:.6rem;height:1rem;z-index:9;pointer-events:none;animation:cf linear forwards}
+@keyframes cf{to{transform:translateY(105vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.cf{display:none}.scr.on{animation:none}.trail p{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="fw"></canvas>
+<main>
+ <div class="dots" id="dots"></div>
+
+ <section class="scr on" id="s0">
+  <div class="term" id="term"></div>
+  <button class="btn l hide" id="b0">BOSHLASH ▶</button>
+ </section>
+
+ <section class="scr" id="s1">
+  <h2>🧺 Sovg'alarni tut!</h2>
+  <p>Savatni barmoq bilan sur. 🍅 va 🧽 ga tegma!</p>
+  <div class="hud"><span>Ball: <b id="pts">0</b></span><span>⏱ <b id="tm">30</b></span></div>
+  <div id="area"><div id="bk">🧺</div></div>
+  <div id="gres"></div>
+  <button class="btn l hide" id="b1">Davom etish ▶</button>
+ </section>
+
+ <section class="scr" id="s2">
+  <h2>📊 Opaning hayot statistikasi</h2>
+  <div class="card">
+   <div class="stat"><b data-n="1247">0</b><span>yeb qo'ygan tortlar 🍰</span></div>
+   <div class="stat"><b>∞</b><span>meni qutqargan marta 🦸‍♀️</span></div>
+   <div class="stat"><b data-n="98000">0</b><span>kech qolgan daqiqalar ⏰</span></div>
+   <div class="stat"><b data-n="100" data-s="%">0</b><span>chiroyli opa 💖</span></div>
+  </div>
+  <button class="btn c" id="b2">Davom etish ▶</button>
+ </section>
+
+ <section class="scr" id="s3">
+  <div class="trail" id="trail"></div>
+  <button class="btn y hide" id="b3">Davom etish ▶</button>
+ </section>
+
+ <section class="scr" id="s4">
+  <h2>🎟️ Qirib och!</h2>
+  <p>Har bir kartada senga alohida tilak yashiringan 💌 Barmoq bilan qirib och</p>
+  <div class="sg" id="sg"></div>
+  <button class="btn l hide" id="b4">Oxirgi syurpriz ▶</button>
+ </section>
+
+ <section class="scr" id="s5">
+  <div class="cert">
+   <h2>🏆 SERTIFIKAT</h2>
+   <p>Ushbu hujjat bilan tasdiqlanadiki:</p>
+   <div class="nm" id="nm">Opajon</div>
+   <p>dunyodagi <b>ENG YAXSHI OPA</b> unvoni bilan taqdirlandi 👑</p>
+   <p style="font-size:.95rem">Doim yonimda bo'lgansan va qo'llab-quvvatlagansan. Hammasi uchun katta rahmat! Tug'ilgan kuning muborak! 💖</p>
+   <div class="stamp">100%<br>ZO'R OPA</div>
+   <p id="dt"></p>
+   <p>Imzo: <b>Jiyaning Shaxi ❤️</b></p>
+  </div>
+  <p>📸 Skrinshot qilib saqlab qo'y!</p>
+  <a class="btn y" id="tg" href="tg://user?id=8774615237">Shaxiga javob yoz 💌</a>
+  <button class="btn c" id="again">Boshidan boshlash 🔁</button>
+ </section>
+</main>
+<script>
+(function(){
+var NAME="Rushancam";                         // opaning ismi
+var $=function(i){return document.getElementById(i)};
+var cols=['#ff4f9a','#27d3e6','#9cf24b','#ffe94a','#8a5cff','#ff9b3d'];
+var N=6,cur=0,timers=[];
+function later(f,t){var id=setTimeout(f,t);timers.push(id)}
+$('nm').textContent=NAME;
+for(var d=0;d<N;d++){var i=document.createElement('i');$('dots').appendChild(i)}
+function confetti(n){for(var k=0;k<n;k++){var c=document.createElement('i');c.className='cf';c.style.left=Math.random()*100+'vw';
+ c.style.background=cols[Math.floor(Math.random()*6)];c.style.animationDuration=(2+Math.random()*2.5)+'s';c.style.animationDelay=Math.random()*.7+'s';
+ c.style.borderRadius=Math.random()<.4?'50%':'0';document.body.appendChild(c);setTimeout(function(e){return function(){e.remove()}}(c),6000)}}
+var inits=[t0,g1,s2,t3,sc4,f5];
+function go(n){timers.forEach(clearTimeout);timers=[];cur=n;
+ document.querySelectorAll('.scr').forEach(function(s,i){s.classList.toggle('on',i===n)});
+ $('dots').querySelectorAll('i').forEach(function(d,i){d.className=i<n?'ok':(i===n?'on':'')});
+ window.scrollTo({top:0});inits[n]()}
+// 0 terminal
+function t0(){var L=[["> "+NAME+".exe ishga tushmoqda..."],["[OK] Kulgi moduli yuklandi"],["[OK] Tort moduli yuklandi"],["[XATO] Kech qolish aniqlandi","w"],["[XATO] Telefon zaryadi: 1%","w"],["> Shaxi tabrik tizimini yoqdi..."]];
+ var t=$('term');t.innerHTML='';$('b0').classList.add('hide');
+ L.forEach(function(l,i){later(function(){var d=document.createElement('div');if(l[1])d.className=l[1];d.textContent=l[0];t.appendChild(d)},500+i*750)});
+ later(function(){var b=document.createElement('span');b.className='big';b.textContent='TABRIK TIZIMI FAOL ✔';t.appendChild(b);confetti(50);$('b0').classList.remove('hide')},500+L.length*750+300)}
+$('b0').addEventListener('click',function(){go(1)});
+// 1 o'yin
+var raf,items=[],score,left,bx,last,spawnT,running=false;
+var kinds=[["🍰",10],["🎁",20],["❤️",15],["🍰",10],["🎁",20],["🍅",-10],["🧽",-15]];
+function g1(){var a=$('area');items.forEach(function(o){o.e.remove()});items=[];score=0;left=30;running=true;last=0;spawnT=0;
+ $('pts').textContent=0;$('tm').textContent=30;$('gres').textContent='';$('b1').classList.add('hide');
+ var W=a.clientWidth;bx=W/2;mv();
+ cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+function mv(){$('bk').style.transform='translateX('+(bx-26)+'px)'}
+function ptr(e){var r=$('area').getBoundingClientRect();bx=Math.max(26,Math.min(r.width-26,e.clientX-r.left));mv()}
+$('area').addEventListener('pointermove',ptr);$('area').addEventListener('pointerdown',ptr);
+function loop(ts){if(!running)return;if(!last)last=ts;var dt=Math.min(.05,(ts-last)/1000);last=ts;
+ var a=$('area'),W=a.clientWidth,H=a.clientHeight;left-=dt;spawnT-=dt;
+ if(left<=0){return endGame()}
+ $('tm').textContent=Math.ceil(left);
+ if(spawnT<=0){spawnT=.55+Math.random()*.3;var k=kinds[Math.floor(Math.random()*kinds.length)],e=document.createElement('div');e.className='it';e.textContent=k[0];a.appendChild(e);
+  items.push({e:e,x:12+Math.random()*(W-56),y:-40,v:150+Math.random()*130+(30-left)*4,p:k[1]})}
+ for(var i=items.length-1;i>=0;i--){var o=items[i];o.y+=o.v*dt;o.e.style.transform='translate('+o.x+'px,'+o.y+'px)';
+  if(o.y>H-58&&o.y<H-10&&Math.abs(o.x+16-bx)<38){score=Math.max(0,score+o.p);$('pts').textContent=score;
+   if(o.p<0){try{navigator.vibrate&&navigator.vibrate(60)}catch(x){}}o.e.remove();items.splice(i,1)}
+  else if(o.y>H){o.e.remove();items.splice(i,1)}}
+ raf=requestAnimationFrame(loop)}
+function endGame(){running=false;items.forEach(function(o){o.e.remove()});items=[];
+ var t=score<100?"Hali mashq kerak 😅 Lekin baribir zo'rsan!":score<250?"Yaxshi natija! Tort ustasi 🍰":"CHEMPION! Sovg'a tutuvchilar malikasi 👑";
+ $('gres').textContent='Natija: '+score+' ball. '+t;confetti(60);$('b1').classList.remove('hide')}
+$('b1').addEventListener('click',function(){go(2)});
+// 2 statistika
+function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function s2(){document.querySelectorAll('[data-n]').forEach(function(b){var n=+b.dataset.n,s=b.dataset.s||'',t0=performance.now();
+ (function f(t){var p=Math.min(1,(t-t0)/1800);b.textContent=fmt(Math.round(n*(1-Math.pow(1-p,3))))+s;if(p<1)requestAnimationFrame(f)})(t0)})}
+$('b2').addEventListener('click',function(){go(3)});
+// 3 treyler
+var TL=["Qadrli Rushancam! 🌹","Yaqinda yoningda bo'lganimda senga gul bermoqchi edim, xuddi sen xohlaganday. Lekin sen uzoqdasan, qo'limdan faqat shularni yozish keladi.","Hammasi uchun rahmat. Doim yonimda bo'lgansan, qo'llab-quvvatlagansan. Yomon kunimda ham, yaxshi kunimda ham oldimda bo'lgansan. Katta rahmat! 💛","Aka pochcham bilan baxtli bo'l.","Kelganingda eslatib qo'ysang, nimadir sovg'a olib beraman 🎁","Yaxshi o'qi, charchama, tushkunlikka tushma. Hali hammasi yaxshi bo'ladi, men bunga ishonaman.","Hurmat bilan jiyaning Shaxi 💛"];
+function t3(){var t=$('trail'),ps=[];t.innerHTML='';$('b3').classList.add('hide');
+ TL.forEach(function(x,i){var p=document.createElement('p');p.textContent=x;if(i==TL.length-1)p.className='sig';t.appendChild(p);ps.push(p);later(function(){p.classList.add('in')},600+i*1900)});
+ later(function(){confetti(70);$('b3').classList.remove('hide')},600+TL.length*1900);
+ t.onclick=function(){timers.forEach(clearTimeout);ps.forEach(function(p){p.classList.add('in')});confetti(40);$('b3').classList.remove('hide')}}
+$('b3').addEventListener('click',function(){go(4)});
+// 4 qirib ochish
+var MS=["Qalbing qanchalik go'zal bo'lsa, taqdiring ham shunchalik porloq bo'lsin ✨","Hayotingda faqat baxt, sog'liq va chin muhabbat bo'lsin 💖","O'qishlaringda omad yor bo'lsin, eng baland marralarni egalla 📚","Orzularing osmondagi yulduzlardek ko'p, barchasi ro'yobga chiqsin 🌟","Har kuning quvonchga, har tuning sokin xotirjamlikka to'lsin 🌙","Sen borsan, demak hayotimizda doim iliqlik bor. Rahmat senga 🌷"];var BG=['#ffd1e3','#c9f3f7','#e3f9c7','#fff1a8','#e2d8ff','#ffe0c2'];
+function sc4(){var g=$('sg');g.innerHTML='';$('b4').classList.add('hide');var done=0;
+ MS.forEach(function(m){var c=document.createElement('div');c.className='sc';c.innerHTML='<div class="m"></div><canvas></canvas>';c.firstChild.textContent=m;c.firstChild.style.background=BG[g.children.length%6];c.firstChild.style.color='#141414';g.appendChild(c)});
+ g.querySelectorAll('.sc').forEach(function(box){var cv=box.querySelector('canvas'),r=box.getBoundingClientRect();cv.width=Math.round(r.width);cv.height=Math.round(r.height);
+  var x=cv.getContext('2d');x.fillStyle='#c4c6d0';x.fillRect(0,0,cv.width,cv.height);x.fillStyle='#8d90a0';x.font='800 16px Nunito,sans-serif';x.textAlign='center';x.fillText('QIR ✨',cv.width/2,cv.height/2+5);
+  var down=false,fin=false,cnt=0;
+  function er(e){if(!down||fin)return;var b=cv.getBoundingClientRect();x.globalCompositeOperation='destination-out';x.beginPath();
+   x.arc((e.clientX-b.left)*cv.width/b.width,(e.clientY-b.top)*cv.height/b.height,17,0,7);x.fill();
+   if(++cnt%6==0){var d=x.getImageData(0,0,cv.width,cv.height).data,z=0,t=0;for(var i=3;i<d.length;i+=64){t++;if(d[i]===0)z++}
+    if(z/t>.42){fin=true;cv.style.opacity=0;confetti(25);try{navigator.vibrate&&navigator.vibrate(40)}catch(q){}if(++done>=MS.length)later(function(){$('b4').classList.remove('hide')},600)}}}
+  cv.addEventListener('pointerdown',function(e){down=true;cv.setPointerCapture(e.pointerId);er(e)});
+  cv.addEventListener('pointermove',er);cv.addEventListener('pointerup',function(){down=false})})}
+$('b4').addEventListener('click',function(){go(5)});
+// 5 final + salyut
+var fw=$('fw'),fx=fw.getContext('2d'),ps=[],fwOn=false,fwEnd=0;
+function fsz(){fw.width=innerWidth;fw.height=innerHeight}fsz();addEventListener('resize',fsz);
+function burst(){var x=60+Math.random()*(fw.width-120),y=60+Math.random()*(fw.height*.45),c=cols[Math.floor(Math.random()*6)];
+ for(var i=0;i<46;i++){var a=Math.random()*6.28,s=1.5+Math.random()*3.5;ps.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,c:c})}}
+function fl(){fx.clearRect(0,0,fw.width,fw.height);
+ for(var i=ps.length-1;i>=0;i--){var p=ps[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.99;p.l-=.012;if(p.l<=0){ps.splice(i,1);continue}
+  fx.globalAlpha=p.l;fx.fillStyle=p.c;fx.beginPath();fx.arc(p.x,p.y,2.6,0,7);fx.fill()}
+ fx.globalAlpha=1;if(fwOn&&performance.now()<fwEnd){if(Math.random()<.04)burst();requestAnimationFrame(fl)}else if(ps.length){requestAnimationFrame(fl)}}
+function f5(){var d=new Date();$('dt').textContent='Sana: '+d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear();
+ confetti(120);fwOn=true;fwEnd=performance.now()+10000;burst();burst();requestAnimationFrame(fl)}
+$('tg').addEventListener('click',function(){try{navigator.clipboard.writeText('Rahmat, Shaxi! Seni yaxshi ko\'raman ❤️')}catch(e){}this.textContent='Xabar nusxalandi, chatga qo\'yib yubor 💌'});
+$('again').addEventListener('click',function(){fwOn=false;go(0)});
+go(0);
+})();
+</script>
+</body>
+</html>
